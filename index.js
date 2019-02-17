@@ -6,11 +6,9 @@ var ejs = require('ejs');
 
 
 const s3 = new AWS.S3({
-  accessKeyId: "AKIAJWG22KNKKUSALBCA",
-  secretAccessKey: "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",
+  accessKeyId: "AKIAJEQM7KQ5W5MBBWXA",
+  secretAccessKey: "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",
 });
-
-
 
 let html ='';
 let fileName ='';
@@ -36,6 +34,7 @@ pdf.create(html, options).toFile(`./${rand}-dispatch.pdf`, function(err, res) {
   // upload he freaking file
 
   var myBucket = 'td-central';
+  var myKey = 'AKIAJWG22KNKKUSALBCA';
   fs.readFile(`./${fileName}`, function (err, data) {
     if (err) { throw err; }
     params = {Bucket: myBucket, Key: fileName, Body: data };
@@ -57,10 +56,8 @@ pdf.create(html, options).toFile(`./${rand}-dispatch.pdf`, function(err, res) {
             console.error(err);
           }
         })
-
       }
     });
-
   });
 
 
